@@ -24,6 +24,16 @@ class ClicesSolution:
         act_t = self.input_text(descript_err)
         return act_t[1::2]
 
+    def forword_half(self, descript_err):
+        # метод вывода второй половины строки нечетное количество символов слева направо (прямое направление)
+        act_w = self.input_text(descript_err)
+        list_len = len(act_w)
+        if (list_len % 2 > 0 and (list_len//2) % 2 == 0) or (list_len % 2 == 0 and (list_len//2) % 2 > 0):
+            k = list_len//2
+        else:
+            k = list_len//2+1 if (list_len % 2 > 0) and (list_len//2 % 2 > 0) else list_len//2-1
+        return act_w[k::]
+
     def reverse_half(self, descript_err):
         #метод вывода второй половины строки в обратном порядке при условии, что эта половина всегда больше остатка
         act_h = self.input_text(descript_err)
