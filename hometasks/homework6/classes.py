@@ -7,6 +7,10 @@ descript = 'Выберите цифру для просмотра метода �
 '6 создание словаря методом копирования copy()'
 '7 получение значений из словаря по ключу\n'
 '8 получение значения None (исключение ошибки) по несуществующему ключу методом get()\n'
+'9 получение списка ключей словаря\n'
+'10 получение списка значений словаря\n'
+'11 получение списка кортежей ключ-значение\n'
+'12 получение различных элементов словаря при помощи итерации\n'
 
 class Dict_list:
     def input_data(self):
@@ -28,9 +32,19 @@ class Dict_list:
                 return self.create_getdata()
             case '8':
                 return self.create_get_dict(note='Введите несуществующий ключ для проверки метода get() d = {\'key1\': \'val1\', \'key2\': 2, \'key3\': True}: ')
+            case '9':
+                return self.create_key_dict()
+            case '10':
+                return self.create_val_dict()
+            case '11':
+                return self.create_items_dict()
+            case '12':
+                return self.create_iter_dict()
 
     def create_literal(self):
-        return 'литерала\nd = {}\nd = {\'key1\': 1, \'key2\': True}'
+        d = {'key1': 1, 'key2': 'val2', 'key3': True}
+        return 'литерала\nd = {}\nd = ' + f"{d}"
+
 
     def create_fdict(self):
         d = dict(key1='val1', key2=2, key3=False)
@@ -52,24 +66,21 @@ class Dict_list:
     def create_comprehension(self):
         d = {'a': 1, 'b': 2, 'c': 3, 'd': 4, 'e': 5}
         d1 = {k: v * 2 for (k, v) in d.items()}
-        return 'генераторов словарей\nd = {\'a\': 1, \'b\': 2, \'c\': 3, \'d\': 4, \'e\': 5}\n' \
-        'd1 = {k: v * 2 for (k, v) in d.items()}\n' \
-        f"print(d1)\n{d1}"
+        return f"генераторов словарей\nd = {d}\n" + 'd1 = {k: v * 2 for (k, v) in d.items()}\n' + f"print(d1)\n{d1}"
 
     def create_copy(self):
         d = {'key1': 'val1', 'key2': 2, 'key3': True}
         id_d = id(d)
         d_copy = d.copy()
         id_d_copy = id(d_copy)
-        return 'Исходный словарь: d = {\'key1\': \'val1\', \'key2\': 2, \'key3\': True}}\n' \
+        return f"Исходный словарь: d = {d}\n" \
                f"Eго id в памяти:\nid_d = id(d)\n{id_d}\nНовый экземпляр словаря, скопированный из исходного:\n" \
                f"d_copy = d.copy()\n{d_copy}.\n" \
                f"Его id в памяти:\nid_d_copy = id(d_copy)\n{id_d_copy}\nотличается от исходного"
 
-
     def create_getdata(self, note='указанный ключ отсутствует в словаре. Для устранения ошибки используйте метод get()'):
         d = {'key1': 'val1', 'key2': 2, 'key3': True}
-        key = input('Введите ключ для получения значения из словаря d = {\'key1\': \'val1\', \'key2\': 2, \'key3\': True}: ')
+        key = input(f"Введите ключ для получения значения из словаря d = {d}: ")
         try:
             res = d[key]
             return res
@@ -85,5 +96,30 @@ class Dict_list:
         else:
             note = 'Вы ввели существующий ключ, введите пожалуйста не существующий: '
             return self.create_get_dict(note)
+
+    def create_key_dict(self):
+        d = {'key1': 'val1', 'key2': 2, 'key3': True}
+        res = d.keys()
+        return f"получаем список ключей словаря:\nd = {d}\nres = d.keys()\nres = {res}"
+
+    def create_val_dict(self):
+        d = {'key1': 'val1', 'key2': 2, 'key3': True}
+        res = d.values()
+        return f"получаем список значений словаря:\nd = {d}\nres = d.values()\nres = {res}"
+
+    def create_items_dict(self):
+        d = {'key1': 'val1', 'key2': 2, 'key3': True}
+        res = d.items()
+        return f"получаем список кортежей ключ-значение словаря:\nd = {d}\nres = d.items()\nres = {res}"
+
+    def create_iter_dict(self):
+        d = {'key1': 'val1', 'key2': 2, 'key3': True}
+        print(f"итерируем словарь по ключам:\n{d}\nfor key in d:\n    print(key)")
+        for key in d:
+            print(key)
+        print(f"итерируем словарь по парам ключ-значение:\n{d}\nfor key, value in d.items():\n    print(key, value)")
+        for key, value in d.items():
+            print(key, value)
+        return ''
 
 
