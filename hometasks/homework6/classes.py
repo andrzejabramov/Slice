@@ -1,9 +1,12 @@
-descript = 'Выберите цифру для просмотра варианта создания словаря с помощью:\n'
-'1 литерала\n'
-'2 функции dict\n'
-'3 метода fromkeys (значения ключей по умолчанию)\n'
-'4 архива zip\n' \
-'5 генераторов словарей\n'
+descript = 'Выберите цифру для просмотра метода словарей:\n'
+'1 создания словаря с помощью литерала\n'
+'2 создания словаря с помощью функции dict\n'
+'3 создания словаря с помощью метода fromkeys (значения ключей по умолчанию)\n'
+'4 создания словаря с помощью архива zip\n'
+'5 создания словаря с помощью генераторов словарей\n'
+'6 получение значений из словаря по ключу\n'
+'7 получение значения None (исключение ошибки) по несуществующему ключу методом get()\n'
+
 
 class Dict_list:
     def input_data(self):
@@ -19,6 +22,10 @@ class Dict_list:
                 return self.create_zip()
             case '5':
                 return self.create_comprehension()
+            case '6':
+                return self.create_getdata()
+            case '7':
+                return self.create_get_dict(note='Введите несуществующий ключ для проверки метода get() d = {\'key1\': \'val1\', \'key2\': 2, \'key3\': True}: ')
 
     def create_literal(self):
         return 'литерала\nd = {}\nd = {\'key1\': 1, \'key2\': True}'
@@ -46,3 +53,24 @@ class Dict_list:
         return 'генераторов словарей\nd = {\'a\': 1, \'b\': 2, \'c\': 3, \'d\': 4, \'e\': 5}\n' \
         'd1 = {k: v * 2 for (k, v) in d.items()}\n' \
         f"print(d1)\n{d1}"
+
+    def create_getdata(self, note='указанный ключ отсутствует в словаре. Для устранения ошибки используйте метод get()'):
+        d = {'key1': 'val1', 'key2': 2, 'key3': True}
+        key = input('Введите ключ для получения значения из словаря d = {\'key1\': \'val1\', \'key2\': 2, \'key3\': True}: ')
+        try:
+            res = d[key]
+            return res
+        except:
+            return note
+
+    def create_get_dict(self, note):
+        d = {'key1': 'val1', 'key2': 2, 'key3': True}
+        key = input(note)
+        res = d.get(key)
+        if res is None:
+            return res
+        else:
+            note = 'Вы ввели существующий ключ, введите пожалуйста не существующий: '
+            return self.create_get_dict(note)
+
+
