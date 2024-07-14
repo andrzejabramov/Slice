@@ -1,20 +1,29 @@
 from itertools import islice
 
-descript = 'Выберите цифру для просмотра метода словарей:\n'
-'1 создания словаря с помощью литерала\n'
-'2 создания словаря с помощью функции dict\n'
-'3 создания словаря с помощью метода fromkeys (значения ключей по умолчанию)\n'
-'4 создания словаря с помощью архива zip\n'
-'5 создания словаря с помощью генераторов словарей\n'
-'6 создание словаря методом копирования copy()'
-'7 получение значений из словаря по ключу\n'
-'8 получение значения None (исключение ошибки) по несуществующему ключу методом get()\n'
-'9 получение списка ключей словаря\n'
-'10 получение списка значений словаря\n'
-'11 получение списка кортежей ключ-значение\n'
-'12 получение различных элементов словаря при помощи итерации\n'
-'13 сортировка элементов словаря\n'
-'14 обрезка словаря\n'
+descript = 'Выберите цифру для просмотра метода словарей:\n' \
+'1 создания словаря с помощью литерала\n' \
+'2 создания словаря с помощью функции dict\n' \
+'3 создания словаря с помощью метода fromkeys (значения ключей по умолчанию)\n' \
+'4 создания словаря с помощью архива zip\n' \
+'5 создания словаря с помощью генераторов словарей\n' \
+'6 создание словаря методом копирования copy()' \
+'7 получение значений из словаря по ключу\n' \
+'8 получение значения None (исключение ошибки) по несуществующему ключу методом get()\n' \
+'9 получение списка ключей словаря\n' \
+'10 получение списка значений словаря\n' \
+'11 получение списка кортежей ключ-значение\n' \
+'12 получение различных элементов словаря при помощи итерации\n' \
+'13 сортировка элементов словаря\n' \
+'14 обрезка словаря\n' \
+'15 добавление в словарь пары ключ-значение\n' \
+'16 обновление словаря методом update\n' \
+'17 чтение и/или добавление пары ключ-значение методом setdefault()\n' \
+'18 удаление пары ключ-значение из словаря методом del()\n' \
+'19 очищение словаря от всех данных методом clear()\n' \
+'20 удаление и получение удаленной пары ключ-значение словаря методом pop()\n' \
+'21 удаление и получение последней пары ключ-значение словаря методом popitem()\n' \
+'22 получение списка из словаря\n' \
+'23 применение метода dir() словаря\n'
 
 class Dict_list:
     def __init__(self, ins):
@@ -50,10 +59,28 @@ class Dict_list:
             case '13':
                 return self.create_sort_dict(ins)
             case '14':
-                return self.create_islice_dict()
+                return self.create_islice_dict(ins)
+            case '15':
+                return self.create_insert_dict(ins)
+            case '16':
+                return self.create_update_dict(ins)
+            case '17':
+                return self.create_setdefault_dict(ins)
+            case '18':
+                return self.create_del_dict(ins)
+            case '19':
+                return self.create_clear_dict(ins)
+            case '20':
+                return self.create_pop_dict(ins)
+            case '21':
+                return self.create_popitem_dict(ins)
+            case '22':
+                return self.create_list_dict(ins)
+            case '23':
+                return self.create_dir_dict(ins)
             case _:
                 print('Вы ввели номер несуществующего метода, попробуйте еще раз:')
-                return self.input_data()
+                return self.input_data(ins)
 
     def create_literal(self, ins):#1
         return 'создания словаря с помощью литерала\nd = {}\nd = ' + f"{ins}"
@@ -94,8 +121,10 @@ class Dict_list:
         key = input(f"Получение значения из словаря по ключу.\n"
                     f"Введите ключ для получения значения из словаря\nd = {ins}: \n")
         try:
+            if type(key) == float:
+                key = float(key)
             res = ins[key]
-            return res
+            return f"val = d[{key}]\n{res}"
         except Exception:
             return note
 
@@ -146,16 +175,52 @@ class Dict_list:
             return self.create_sort_dict(ins)
         return ''
 
-    def create_islice_dict(self):#14
-        return self._param()
+    def create_islice_dict(self, ins):#14
+        return self._param(ins)
 
     def _input_param(self, notify):
         ins = input(notify)
         return ins
 
-    def _param(self):
-        ins_dict = {'key1': 'val1', 'key2': 'val2', 'key3': 'val3', 'key4': 'val4', 'key5': 'val5', 'key6': 'val6'}
-        note_dict = f"Введите произвольный словарь, например,\nскопируйте и введите предложенный вариант:\n{ins_dict}\n"
+    def _valid_ins(self, min_param, val_param, l, f_note):
+        txt = self._input_param(f_note)
+        if txt == 'None':
+            ans = None
+        else:
+            while True:
+                try:
+                    ans = int(txt)
+                    break
+                except Exception:
+                    print(f"Параметр {val_param} должно быть числом или None,\n"
+                          f"Вы ввели недопустимый формат: {txt},\n" \
+                          f"Повторите пожалуста ввод: ")
+                    txt = self._input_param(f_note)
+            while ans < min_param:
+                print(f"Параметр {val_param} должно быть None или больше или равно {min_param}. "
+                      f"Введите пожалуйста корректное значение: ")
+                {self._input_param(f_note)}
+            if ans > l:
+                note_param = f"Вы ввели параметр stop {val_param} {ans} превышающий число пар словаря {l}.\n" \
+                             f"Это не приведет к ошибке, но Вы получите пустой словарь,\n" \
+                             f"поэтому мы поправили Вас и присвоили значению {val_param} " \
+                             f"значение значение длины словаря {l}.\nЕсли Вы согласны, введите Y, если нет введите N: "
+                note_yn = None
+                yn = self._input_param(note_param).upper()
+                while yn != 'Y' and yn != 'N':
+                    yn = self.input_param(note_yn).upper()
+                if yn == 'Y':
+                    ans = l
+        return ans
+
+    def _param(self, ins):
+        note_dict = f"Обрезка словаря. Введите произвольный словарь, например,\nскопируйте и введите предложенный вариант:\n{ins}\n" \
+                    f"Предупреждение!!! При копировании предложенного варианта словаря из блока Run pycharm\n" \
+                    f"блок переводится в режим чтения без возможности обратного переключения\n" \
+                    f"и после ввода скопированой строки дальнейший ввод данных в блоке Run невозможен.\n" \
+                    f"Для восстановления работоспособности после копирования словаря в память перезапустите этот тест\n"
+        min_param = 0
+        val_param = 'start'
         d = self._input_param(notify=note_dict)
         while True:
             try:
@@ -165,63 +230,52 @@ class Dict_list:
             except Exception:
                 print('Вы ввели неверный формат словря, пожалуйста, повторите ввод правильно: ')
                 d = self._input_param(notify=note_dict)
-
         note_start = f"Обрезка словаря:\n{d}\nВведите начальный индекс обрезки a = "
-        txt = self._input_param(note_start)
-        while True:
-            try:
-                a = int(txt)
-                break
-            except Exception:
-                print(f"Параметр start должно быть числом, Вы ввели недопустимый формат: {txt},\n" \
-                      f"Повторите пожалуста ввод: ")
-                txt = self._input_param(note_start)
-        while a > l:
-            note_a = f"Вы ввели параметр start {a}, превышающий число пар словаря {l}. Это не приведет к ошибке," \
-                     f"но Вы получите пустой словарь,\nпоэтому мы поправили Вас и присвоили значению start " \
-                     f"значение длины словаря {l}.\nЕсли Вы согласны, введите Y, если нет введите N: "
-            note_yn = f"Вы ввели неверное значение вместо Y или N, пожалуйста, повторите ввод: "
-            yn = self._input_param(note_a).upper()
+        a_start = self._valid_ins(min_param, val_param, l, note_start)
+        note_stop = 'введите конечный индекс обрезки, помните, что он не включается в выборку: b = '
+        val_param = 'stop'
+        b_stop = self._valid_ins(min_param, val_param, l, note_stop)
+        if b_stop < a_start:
+            note_b = f"Вы ввели параметр {val_param} {b_stop} меньше, чем параметр start {a_start},\n" \
+                     f"это не приведет к ошибке, но Вы получите пустой словарь,\n" \
+                     f"поэтому мы поправили Вас и присвоили значению {val_param} " \
+                     f"значение параметра start {a_start}.\nЕсли Вы согласны, введите Y, если нет введите N: "
+            note_yn = None
+            yn = self._input_param(note_b).upper()
             while yn != 'Y' and yn != 'N':
-                yn = input_param(note_yn).upper()
-            if yn == 'N':
-                self._param()
-            else:
-                a = l
-        else:
-            a_start = a
+                yn = self.input_param(note_yn).upper()
+            if yn == 'Y':
+                b_stop = a_start
+        note_step = 'введите шаг выборки: с= '
+        val_param = 'step'
+        min_param = 1
+        c_step = self._valid_ins(min_param, val_param, l, note_step)
+        res = dict(islice(d.items(), a_start, b_stop, c_step))
+        return f"Результат выполнения теста:\nd = {ins}\n" \
+               f"res = dict(islice(d.items(), {a_start}, {b_stop}, 1))\n{res}"
 
-        # note_stop = 'введите конечный индекс обрезки, помните, что он не включается в выборку: b = '
-        # try:
-        #     txt = self._input_param(note_stop)
-        #     b = int(txt)
-        #     if b < a:
-        #         print(f"Вы ввели параметр stop {b} меньше, чем параметр start {a}, это не приведет к ошибке," \
-        #               f"но Вы получите пустой словарь,\nпоэтому мы поправили Вас и присвоили значению stop " \
-        #               f"значение параметра start {a}.\nЕсли Вы согласны, введите Y, если нет введите N: ")
-        #         self._yes_no()
-        #         b_stop = a
-        #     elif b > l:
-        #         print(f"Вы ввели параметр stop {b} превышающий число пар словаря {l}. Это не приведет к ошибке,"
-        #               f"но Вы получите пустой словарь,\nпоэтому мы поправили Вас и присвоили значению stop " \
-        #               f"значение значение длины словаря {l}.\nЕсли Вы согласны, введите Y, если нет введите N: ")
-        #         self._yes_no()
-        #         b_stop = l
-        # except Exception:
-        #     print(f"Параметр start должно быть числом, Вы ввели недопустимый формат: {txt},\n" \
-        #           f"Повторите пожалуста ввод: ")
-        #     b_stop = self._input_param(note_stop)
+    def create_insert_dict(self, ins):#15
+        pass
+    def create_update_dict(self, ins):#16
+        pass
 
-        # c = input('введите шаг выборки с = ')
-        # def islice_dict(a_start=0, b_stop=0, c_step=None):
-        #     d_islice = dict(islice(d.items(), a_start, b_stop, c_step))
-        #     return d_islice
-        # try:
-        #     c = int(c)
-        #     res = islice_dict(a, b, c)
-        # except:
-        #     c = None
-        #     return f"Вы ввели неверный параметр step, который может принимать значения " \
-        #            f"либо None либо целое число более 0, поэтому введенное Вами значение преобразовано в None\n" \
-        #            f"d_islice = dict(islice(d.items(), {a}, {b}, {c}))\n{islice_dict(a, b, c)}"
-        return a_start #+ ' ' + b_stop)
+    def create_setdefault_dict(self, ins):#17
+        pass
+
+    def create_del_dict(self, ins):#18
+        pass
+
+    def create_claer_dict(self, ins):#19
+        pass
+
+    def create_pop_dict(self, ins):#20
+        pass
+
+    def create_popitem_dict(self, ins):#21
+        pass
+
+    def create_list_dict(self, ins):#22
+        pass
+
+    def create_dir_dict(self, ins):#23
+        pass

@@ -1,36 +1,46 @@
-import re
-
-# regex = r"\d|None"
-# b = input()
-# с = b if re.findall(regex, b) else None
-# print(с)
-
-# pattern = re.compile(ur'None')
-# str = u''
-# print(pattern.search(str))
-
-# d = {'key1': 'val1', 'key2': 'val2', 'key3': 'val3', 'key4': 'val4', 'key5': 'val5', 'key6': 'val6'}
-# # print(type(d))
-# print(len(dict({\'key1\': \'val1\', \'key2\': \'val2\', \'key3\': \'val3\', \'key4\': \'val4\', \'key5\': \'val5\', \'key6\': \'val6\'}')))
+from itertools import islice
 
 
-# d = '{\'key1\': \'val1\', \'key2\': \'val2\'}'
-# a = input()
-# while True:
-#     try:
-#         a = eval(a)
-#         print(a)
-#         break
-#     except Exception:
-#         print('err')
-#         a = input()
+d = {1: 'val1', 'key2': 2, 'key3': True, 'key4': [('o', 1), ('p', 2), ('q', 3)], 'key5': {'key': 'val'}, 'key6': None}
+l1 = len(d)
+notify = 'notify'
+val_param1 = 'stop'
+f_note = 'Введите значение: '
+note_yn = None
+min_param1 = 0
 
-# m = 'key1=val1, key2=val2, key3=val3'
-# d = dict(m)
-# #d = dict(key1='val1', key2='val2', key3='val3')
-# print(d)
+def input_param(notify):
+    ins = input(notify)
+    return ins
 
-d = {'key1': 'val1', 'key2': 2, 'key3': True, 'key4': [('o', 1), ('p', 2), ('q', 3)], 'key5': {'key': 'val'}, 'key6': None}
-for key in d:
-    a = (key)
-print(a)
+def valid_ins(min_param, val_param, l, f_note):
+    txt = input_param(f_note)
+    if txt == 'None':
+        ans = None
+    else:
+        while True:
+            try:
+                ans = int(txt)
+                break
+            except Exception:
+                print(f"Параметр {val_param} должно быть числом или None,\n"
+                      f"Вы ввели недопустимый формат: {txt},\n" \
+                      f"Повторите пожалуста ввод: ")
+                txt = input_param(f_note)
+        while ans < min_param:
+            print(f"Параметр {val_param} должно быть None или больше или равно {min_param}. "
+                  f"Введите пожалуйста корректное значение: ")
+            input_param(f_note)
+        if ans > l:
+            note_param = f"Вы ввели параметр {val_param} {ans} превышающий число пар словаря {l}.\n" \
+                         f"Это не приведет к ошибке, но Вы получите пустой словарь,\n" \
+                         f"поэтому мы поправили Вас и присвоили значению {val_param} " \
+                         f"значение длины словаря {l}.\nЕсли Вы согласны, введите Y, если нет введите N: "
+            yn = input_param(note_param).upper()
+            while yn != 'Y' and yn != 'N':
+                yn = input_param(note_yn).upper()
+            if yn == 'Y':
+                ans = l
+    return ans
+
+print(valid_ins(min_param1, val_param1, l1, f_note))
