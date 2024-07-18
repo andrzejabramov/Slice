@@ -182,35 +182,72 @@ class Dict_list:
         ins = input(notify)
         return ins
 
+    # def _valid_ins(self, min_param, val_param, l, f_note):
+    #     txt = self._input_param(f_note)
+    #     if txt == 'None':
+    #         ans = None
+    #     else:
+    #         while True:
+    #             try:
+    #                 ans = int(txt)
+    #                 break
+    #             except Exception:
+    #                 print(f"Параметр {val_param} должно быть числом или None,\n"
+    #                       f"Вы ввели недопустимый формат: {txt},\n" \
+    #                       f"Повторите пожалуста ввод: ")
+    #                 txt = self._input_param(f_note)
+    #         while ans < min_param:
+    #             print(f"Параметр {val_param} должно быть None или больше или равно {min_param}. "
+    #                   f"Введите пожалуйста корректное значение: ")
+    #             text = self._input_param(f_note)
+    #             ans = text
+    #         if ans > l:
+    #             note_param = f"Вы ввели параметр stop {val_param} {ans} превышающий число пар словаря {l}.\n" \
+    #                          f"Это не приведет к ошибке, но Вы получите пустой словарь,\n" \
+    #                          f"поэтому мы поправили Вас и присвоили значению {val_param} " \
+    #                          f"значение значение длины словаря {l}.\nЕсли Вы согласны, введите Y, если нет введите N: "
+    #             note_yn = None
+    #             yn = self._input_param(note_param).upper()
+    #             while yn != 'Y' and yn != 'N':
+    #                 yn = self.input_param(note_yn).upper()
+    #             if yn == 'Y':
+    #                 ans = l
+    #     return ans
+
     def _valid_ins(self, min_param, val_param, l, f_note):
         txt = self._input_param(f_note)
-        if txt == 'None':
-            ans = None
-        else:
-            while True:
-                try:
-                    ans = int(txt)
+        while True:
+            try:
+                ans = int(txt)
+                if ans < min_param:
+                    while True:
+                        print(f"Параметр {val_param} должно быть None или больше или равно {min_param}. "
+                              f"Введите пожалуйста корректное значение: ")
+                        ans = self._valid_ins(min_param, val_param, l, f_note)
+                        break
+                elif ans > l:
+                    note_param = f"Вы ввели параметр stop {val_param} {ans} превышающий число пар словаря {l}.\n" \
+                                 f"Это не приведет к ошибке, но Вы получите пустой словарь,\n" \
+                                 f"поэтому мы поправили Вас и присвоили значению {val_param} " \
+                                 f"значение значение длины словаря {l}.\nЕсли Вы согласны, введите Y, если нет введите N: "
+                    note_yn = None
+                    yn = self._input_param(note_param).upper()
+                    while yn != 'Y' and yn != 'N':
+                        yn = self._input_param(note_yn).upper()
+                    if yn == 'Y':
+                        ans = l
+                    else:
+                        exit
+                break
+            except Exception:
+                if txt == 'None':
+                    ans = None
                     break
-                except Exception:
+                else:
                     print(f"Параметр {val_param} должно быть числом или None,\n"
                           f"Вы ввели недопустимый формат: {txt},\n" \
                           f"Повторите пожалуста ввод: ")
                     txt = self._input_param(f_note)
-            while ans < min_param:
-                print(f"Параметр {val_param} должно быть None или больше или равно {min_param}. "
-                      f"Введите пожалуйста корректное значение: ")
-                {self._input_param(f_note)}
-            if ans > l:
-                note_param = f"Вы ввели параметр stop {val_param} {ans} превышающий число пар словаря {l}.\n" \
-                             f"Это не приведет к ошибке, но Вы получите пустой словарь,\n" \
-                             f"поэтому мы поправили Вас и присвоили значению {val_param} " \
-                             f"значение значение длины словаря {l}.\nЕсли Вы согласны, введите Y, если нет введите N: "
-                note_yn = None
-                yn = self._input_param(note_param).upper()
-                while yn != 'Y' and yn != 'N':
-                    yn = self.input_param(note_yn).upper()
-                if yn == 'Y':
-                    ans = l
         return ans
 
     def _param(self, ins):
@@ -235,7 +272,7 @@ class Dict_list:
         note_stop = 'введите конечный индекс обрезки, помните, что он не включается в выборку: b = '
         val_param = 'stop'
         b_stop = self._valid_ins(min_param, val_param, l, note_stop)
-        if b_stop < a_start:
+        if type(b_stop) == int and b_stop < a_start:
             note_b = f"Вы ввели параметр {val_param} {b_stop} меньше, чем параметр start {a_start},\n" \
                      f"это не приведет к ошибке, но Вы получите пустой словарь,\n" \
                      f"поэтому мы поправили Вас и присвоили значению {val_param} " \
@@ -252,7 +289,7 @@ class Dict_list:
         c_step = self._valid_ins(min_param, val_param, l, note_step)
         res = dict(islice(d.items(), a_start, b_stop, c_step))
         return f"Результат выполнения теста:\nd = {ins}\n" \
-               f"res = dict(islice(d.items(), {a_start}, {b_stop}, 1))\n{res}"
+               f"res = dict(islice(d.items(), {a_start}, {b_stop}, {c_step}))\n{res}"
 
     def create_insert_dict(self, ins):#15
         pass

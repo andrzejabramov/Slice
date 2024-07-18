@@ -35,82 +35,51 @@ import re
 #
 #
 # print(start())
-#
-#
-# def game(phrase_to_guess):
-#     return input("Guess the phrase: ") == phrase_to_guess
-#
-# def main():
-#     phrase = "hello, world"
-#     while not game(phrase):
-#         print("Incorrect.")
-#     print("Correct")
-#
-# main()
-#
-#
-#
-# import re
-#
-#
-# def input_param(descript):
-#     ins = input(descript)
-#     return ins
-#
-# def param(d):
-#     l = len(d)
-#     note_start = f"Обрезка словаря:\n{d}\nВведите начальный индекс обрезки a = "
-#     note_err = f"Параметр должно быть числом, Вы ввели недопустимый формат,\n" \
-#               f"Повторите пожалуста ввод: "
-#     regex = r'\D'
-#     a = input_param(note_start)
-#     while len(re.findall(regex, a)) > 0:
-#         a = input_param(note_err)
-#     a = int(a)
-#     note = f"Вы ввели параметр start {a}, превышающий число пар словаря {l}. Это не приведет к ошибке," \
-#            f"но Вы получите пустой словарь,\nпоэтому мы поправили Вас и присвоили значению start " \
-#            f"значение длины словаря {l}.\nЕсли Вы согласны, введите Y, если нет введите N: "
-#     note_yn = f"Вы ввели неверное значение вместо Y или N, пожалуйста, повторите ввод: "
-#     start_param = 'start'
-#     if a > l:
-#         yn = input_param(note).upper()
-#         while yn != 'Y' and yn != 'N':
-#             yn = input_param(note_yn).upper()
-#         if yn == 'N':
-#             param()
-#         elif yn == 'Y':
-#             a_start = l
-#             return a_start
-#     else:
-#         a_start = a
-#         note_stop = 'введите конечный индекс обрезки, помните, что он не включается в выборку: b = '
-#         b = input_param(note_stop)
-#         regex = r'\D'
-#         if len(re.findall(regex, b)) == 0:
-#             note_ab = f"Вы ввели параметр stop {b} меньше, чем параметр start {a_start}, это не приведет к ошибке," \
-#                       f"но Вы получите пустой словарь,\nпоэтому мы поправили Вас и присвоили значению stop " \
-#                       f"значение параметра start {a_start}.\nЕсли Вы согласны, введите Y, если нет введите N: "
-#             if b < a_start:
-#                 print(note_ab)
-#                 input_param(note)
-#                 b_stop = a_start
-#                 return b_stop
-#             elif b > l:
-#                 print(f"Вы ввели параметр stop {b} превышающий число пар словаря {l}. Это не приведет к ошибке,"
-#                       f"но Вы получите пустой словарь,\nпоэтому мы поправили Вас и присвоили значению stop " \
-#                       f"значение значение длины словаря {l}.\nЕсли Вы согласны, введите Y, если нет введите N: ")
-#                 yes_no()
-#                 b_stop = l
-#                 return b_stop
-#             print(f"Параметр start должно быть числом, Вы ввели недопустимый формат: {txt},\n" \
-#                   f"Повторите пожалуста ввод: ")
-#             b_stop = input_param(note_stop)
-#         elif b == 'None':
-#             b_stop = None
-#         else:
-#             b_stop = 'alarm'
-#         return b_stop
-# #---------------------------------------
-#
-a = input()
-print(re.match(r"\d+.\d+", a))
+
+notify = 'jhgjh'
+min_param = 1
+val_param = 'stop'
+f_note = '765765765 '
+l = 6
+
+def input_param(notify):
+    ins = input(notify)
+    return ins
+
+def valid_ins(min_param, val_param, l, f_note):
+    txt = input_param(f_note)
+    while True:
+        try:
+            ans = int(txt)
+            if ans < min_param:
+                while True:
+                    print(f"Параметр {val_param} должно быть None или больше или равно {min_param}. "
+                          f"Введите пожалуйста корректное значение: ")
+                    ans = valid_ins(min_param, val_param, l, f_note)
+                    break
+            elif ans > l:
+                note_param = f"Вы ввели параметр stop {val_param} {ans} превышающий число пар словаря {l}.\n" \
+                             f"Это не приведет к ошибке, но Вы получите пустой словарь,\n" \
+                             f"поэтому мы поправили Вас и присвоили значению {val_param} " \
+                             f"значение значение длины словаря {l}.\nЕсли Вы согласны, введите Y, если нет введите N: "
+                note_yn = None
+                yn = input_param(note_param).upper()
+                while yn != 'Y' and yn != 'N':
+                    yn = input_param(note_yn).upper()
+                if yn == 'Y':
+                    ans = l
+                else:
+                    exit
+            break
+        except Exception:
+            if txt == 'None':
+                ans = None
+                break
+            else:
+                print(f"Параметр {val_param} должно быть числом или None,\n"
+                      f"Вы ввели недопустимый формат: {txt},\n" \
+                      f"Повторите пожалуста ввод: ")
+                txt = input_param(f_note)
+    return ans
+
+print(valid_ins(min_param, val_param, l, f_note))
