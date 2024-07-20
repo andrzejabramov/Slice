@@ -6,7 +6,7 @@ descript = 'Выберите цифру для просмотра метода �
 '3 создания словаря с помощью метода fromkeys (значения ключей по умолчанию)\n' \
 '4 создания словаря с помощью архива zip\n' \
 '5 создания словаря с помощью генераторов словарей\n' \
-'6 создание словаря методом копирования copy()' \
+'6 создание словаря методом копирования copy()\n' \
 '7 получение значений из словаря по ключу\n' \
 '8 получение значения None (исключение ошибки) по несуществующему ключу методом get()\n' \
 '9 получение списка ключей словаря\n' \
@@ -23,15 +23,50 @@ descript = 'Выберите цифру для просмотра метода �
 '20 удаление пары ключ-значение и получение удаленного значения словаря методом pop()\n' \
 '21 удаление и получение последней пары ключ-значение словаря методом popitem()\n' \
 '22 получение длины словаря\n' \
-'23 применение метода dir() словаря\n'
+'23 применение метода dir() словаря\n' \
+'24 создание множества вручную\n' \
+'25 создвние множества из списка методом set()\n' \
+'26 создание пустого множества\n' \
+'27 доступ к элементам множества с помощью цикла\n' \
+'28 проверка наличия элемента множества\n' \
+'29 добавление элемента множества\n' \
+'30 удаление элементов множества методом discard()\n' \
+'31 удаление элементов множества методом remove()\n' \
+'32 удаление элементов множесива и возврат удаленных/оставшихся методом pop()\n' \
+'33 удаление элементов множества методом clear()\n' \
+'34 объединение множеств методом union()\n' \
+'35 пересечение множеств методом intersection() или &\n' \
+'36 определение является ли множество пересечением методом isdisjoint()\n' \
+'37 определение разницы множеств методами difference() и symmetric_difference()' \
+'38 сравнене множеств\n' \
+'39 копирование множеств методом copy()\n' \
+'40 определение длины множества методом len()\n' \
+'41 замороженное множество с помощью метода frozenset()\n'
 
 class Dict_list:
-    def __init__(self, ins):
+    def __init__(self, ins, lmethod, descript):
         self.ins = ins
+        self.lmethod = lmethod
+        self.descript = descript
 
-    def input_data(self, ins):
-        inp = input(descript)
-        match inp:
+    def descr(self):
+        return descript
+
+    def valid_metod(self, lmethod, descript):
+        method_list = []
+        for row in descript:
+            if row == '\n':
+                st = descript.find('\n') + 1
+                descript = descript[st:]
+                en = descript.find(' ')
+                sub_l = descript[:en]
+                if sub_l != '':
+                    method_list.append(sub_l)
+        ans = True if method_list.index(lmethod) < 23 else False
+        return ans
+
+    def input_data(self, lmethod, ins):
+        match lmethod:
             case '1':
                 return self.create_literal(ins)
             case '2':
@@ -78,6 +113,42 @@ class Dict_list:
                 return self.create_len_dict(ins)
             case '23':
                 return self.create_dir_dict(ins)
+            case '24':
+                return self.create_hand_set(ins)
+            case '25':
+                return self.create_set_list(ins)
+            case '26':
+                return self.create_null_set(ins)
+            case '27':
+                return self.create_circle_set(ins)
+            case '28':
+                return self.create_in_set(ins)
+            case '29':
+                return self.create_add_set(ins)
+            case '30':
+                return self.create_discard_set(ins)
+            case '31':
+                return self.create_remove_set(ins)
+            case '32':
+                return self.create_pop_set(ins)
+            case '33':
+                return self.create_clear_set(ins)
+            case '34':
+                return self.create_union_set(ins)
+            case '35':
+                return self.create_intersection_set(ins)
+            case '36':
+                return self.create_isdisjoint_set(ins)
+            case '37':
+                return self.create_diff_set(ins)
+            case '38':
+                return self.create_compare_set(ins)
+            case '39':
+                return self.create_copy_set(ins)
+            case '40':
+                return self.create_len_set(ins)
+            case '41':
+                return self.create_frozenset_set(ins)
             case _:
                 print('Вы ввели номер несуществующего метода, попробуйте еще раз:')
                 return self.input_data(ins)
@@ -323,3 +394,58 @@ class Dict_list:
     def create_dir_dict(self, ins):#23
         res = dir(ins)
         return f"применение метода dir() словаря:\nd = {ins}\nперечисляются атрибуты и методы словаря:\ndir = dir(d)\n{res}"
+
+    def create_hand_set(self, ins):#24
+        pass
+
+    def create_set_list(self, ins):#25
+        pass
+
+    def create_null_set(self, ins):#26
+        pass
+
+    def create_circle_set(self, ins):#27
+        pass
+
+    def create_in_set(self, ins):#28
+        pass
+
+    def create_add_set(self, ins):#29
+        pass
+
+    def create_discard_set(self, ins):#30
+        pass
+
+    def create_remove_set(self, ins):#31
+        pass
+
+    def create_pop_set(self, ins):#32
+        pass
+
+    def create_clear_set(self, ins):#33
+        pass
+
+    def create_union_set(self, ins):#34
+        pass
+
+    def create_intersection_set(self, ins):#35
+        pass
+
+    def create_isdisjoint_set(self, ins):#36
+        pass
+
+    def create_diff_set(self, ins):#37
+        pass
+
+    def create_compare_set(self, ins):#38
+        pass
+
+    def create_copy_set(self, ins):#39
+        pass
+
+    def create_len_set(self, ins):#40
+        pass
+
+    def create_frozenset_set(self, ins):#41
+        pass
+
