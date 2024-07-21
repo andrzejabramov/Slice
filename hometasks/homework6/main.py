@@ -2,7 +2,7 @@ from classes import Dict_list
 
 
 d = {-1: 'val1', 'key2': 2, 'key3': True, 'key4': [('o', 1), ('p', 2), ('q', 3)], 'key5': {'key': 'val'}, 'key6': None}
-m = {1, 'val', True}
+m = {1, 'val', True, (5, 'val1', False)}
 ch = {}
 n = ''
 descript = ''
