@@ -10,10 +10,7 @@ for element in numbers:
             if element % el == 0:
                 res = True
                 break
-        if res is False:
-            primes.append(element)
-        else:
-            not_primes.append(element)
+        primes.append(element) if res is False else not_primes.append(element)
 
 print(f"простые числа: {primes}")
 print(f"составные числа: {not_primes}")
