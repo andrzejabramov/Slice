@@ -3,7 +3,8 @@ count = 0
 
 
 while my_list[count] >= 0:
-    print(my_list[count])
+    if my_list[count] > 0:
+        print(my_list[count])
     count += 1
     if count < len(my_list):
         continue
