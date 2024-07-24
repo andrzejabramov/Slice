@@ -207,10 +207,10 @@ class Dict_list:
 
     def create_get_dict(self, ins, note):#8
         key = input('Исключение ошибки при вводе несуществующего ключа методом get()\n'
-                    ''+note+f"для словаря:\n{ins}: \n")
+                    ''+note+f"для словаря:\nd = {ins}: \n")
         res = ins.get(key)
         if res is None:
-            return res
+            return f"valid_key = d.get(res)\n{res}"
         else:
             note = 'Вы ввели существующий ключ, введите пожалуйста не существующий: '
             return self.create_get_dict(ins, note)
