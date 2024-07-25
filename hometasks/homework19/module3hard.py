@@ -9,8 +9,6 @@ count = 0
 
 def calculate_structure_sum(data_structure):
     global count
-    if len(data_structure) == 0:
-        count = count
     for element in data_structure:
         if isinstance(element, int) or isinstance(element, float):
             count = count + element
