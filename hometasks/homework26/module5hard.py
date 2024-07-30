@@ -1,3 +1,5 @@
+from time import sleep
+
 class User:
     def __init__(self, nickname, password, age=None):
         self.nickname = nickname
@@ -18,6 +20,10 @@ class Video:
         self.duration = duration
         self.time_now = time_now
         self.adult_mode = adult_mode
+        if time_now > duration:
+            print('Вы ввели время просмотра видео больше его длительности,\n' \
+                  'поэтому просмотр будет длиться до окончания фильма')
+            self.time_now = duration
 
     def __str__(self) -> str:
         return f"{self.title}, {self.duration}, {self.time_now}, {self.adult_mode}"
@@ -39,10 +45,8 @@ class UrTube:
     def log_in(self, nickname, password):
         u = User(nickname, password)
         l = u.user_list()[:-1]
-        print(f"{l=}")
         for i in range(len(UrTube.users)):
             nick = UrTube.users[i][:-1]
-            print(f"{nick}")
             if nick == l:
                 self.current_user = nickname
                 return f"Добро, пожаловать, {nickname}!"
@@ -82,13 +86,41 @@ class UrTube:
                 l.append(name)
         return l
 
+    def watch_video(self, name):
+        for i in range(len(UrTube.videos)):
+            if name == UrTube.videos[i][0]:
+                if self.current_user == None:
+                    return 'Для просмотра видео авторизуйтесь пожалуйста'
+                for u in range(len(UrTube.users)):
+                    if UrTube.users[u][2] < 18 and UrTube.videos[i][3] is True:
+                        return 'Вам нет 18 лет, пожалуйста покиньте страницу'
+                view = self._dur_video(UrTube.videos[i][2])
+                return view
+        return f"Фильм {name} в фильмотеке не обнаружен"
 
-    def watch_video(self):
-        pass
+    def _dur_video(self, time_now=0):
+        while True:
+            tm = mn = h = '00'
+            sec = 0
+            for q in range(0, 24):
+                h = tm[:-len(str(q))] + str(q)
+                for j in range(0, 60):
+                    mn = tm[:-len(str(j))] + str(j)
+                    for i in range(0, 60):
+                        sc = tm[:-len(str(i))]+str(i)
+                        dur = h+':'+mn+':'+sc
+                        print('Идет просмотр видео. '+dur)
+                        sleep(0.0001)
+                        if sec == time_now:
+                            return 'Конец видео'
+                        sec += 1
+            return 'Конец видео'
+
+
 
 
 ur = UrTube()
-v1 = Video('Лучший язык программирования 2024 года', 200)
+v1 = Video('Лучший язык программирования 2024 года', 200, 20)
 print(v1)
 v2 = Video('Для чего девушкам парень программист?', 10, adult_mode=True)
 print(v2)
@@ -111,3 +143,9 @@ g = ur.get_videos('ПРОГ')
 print(g)
 h = ur.get_videos('Лучш')
 print(h)
+j = ur.watch_video('Для чего девушкам парень программист?')
+print(j)
+k = ur.log_in('vasya_pupkin', 'lolkekcheburek')
+print(k)
+m = ur.watch_video('Лучший язык программирования 2024 года')
+print(m)
