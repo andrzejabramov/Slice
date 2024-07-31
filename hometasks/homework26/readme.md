@@ -240,9 +240,9 @@ w = ur.watch_video('Для чего девушкам парень програм
 print(w)
 ```
 ### Прикрепляю скрины выполнения кода в консоли
-![скрин1](hometasks/homework26/image/Скан1.png)
-![скрин2](hometasks/homework26/image/Скан2.png)
-![скрин3](hometasks/homework26/image/Скан3.png)
+![скрин1](https://github.com/andrzejabramov/Slice/edit/master/hometasks/hometasks/homework26/image/Скан1.png)
+![скрин2](https://github.com/andrzejabramov/Slice/edit/master/hometasks/hometasks/homework26/image/Скан2.png)
+![скрин3](https://github.com/andrzejabramov/Slice/edit/master/hometasks/hometasks/homework26/image/Скан3.png)
 
 
 ## Благодарю за задание! Было очень интересно
