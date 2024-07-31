@@ -239,5 +239,10 @@ print('\nисправляем ошибки в названии видео')
 w = ur.watch_video('Для чего девушкам парень программист?')
 print(w)
 ```
+### Прикрепляю скрины выполнения кода в консоли
+hometasks/homework26/image/Скан1.png
+hometasks/homework26/image/Скан2.png
+hometasks/homework26/image/Скан3.png
+
 
 ## Благодарю за задание! Было очень интересно
