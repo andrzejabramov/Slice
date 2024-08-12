@@ -184,22 +184,22 @@ print(wf.create_file())
 
 ## 9. Скрины работы метода create_file():
 
-[image1](https://github.com/andrzejabramov/Slice/blob/master/hometasks/homework33/images/image1.png)
+![image1](https://github.com/andrzejabramov/Slice/blob/master/hometasks/homework33/images/image1.png)
 
-[image2](https://github.com/andrzejabramov/Slice/blob/master/hometasks/homework33/images/image2.png)
+![image2](https://github.com/andrzejabramov/Slice/blob/master/hometasks/homework33/images/image2.png)
 
-[image3](https://github.com/andrzejabramov/Slice/blob/master/hometasks/homework33/images/image3.png)
+![image3](https://github.com/andrzejabramov/Slice/blob/master/hometasks/homework33/images/image3.png)
 
-[image4](https://github.com/andrzejabramov/Slice/blob/master/hometasks/homework33/images/image4.png)
+![image4](https://github.com/andrzejabramov/Slice/blob/master/hometasks/homework33/images/image4.png)
 
-[image5](https://github.com/andrzejabramov/Slice/blob/master/hometasks/homework33/images/image5.png)
+![image5](https://github.com/andrzejabramov/Slice/blob/master/hometasks/homework33/images/image5.png)
 
-[image6](https://github.com/andrzejabramov/Slice/blob/master/hometasks/homework33/images/image6.png)
+![image6](https://github.com/andrzejabramov/Slice/blob/master/hometasks/homework33/images/image6.png)
 
-[image7](https://github.com/andrzejabramov/Slice/blob/master/hometasks/homework33/images/image7.png)
+![image7](https://github.com/andrzejabramov/Slice/blob/master/hometasks/homework33/images/image7.png)
 
-[image8](https://github.com/andrzejabramov/Slice/blob/master/hometasks/homework33/images/image8.png)
+![image8](https://github.com/andrzejabramov/Slice/blob/master/hometasks/homework33/images/image8.png)
 
-[image9](https://github.com/andrzejabramov/Slice/blob/master/hometasks/homework33/images/image9.png)
+![image9](https://github.com/andrzejabramov/Slice/blob/master/hometasks/homework33/images/image9.png)
 
-[image10](https://github.com/andrzejabramov/Slice/blob/master/hometasks/homework33/images/image10.png)
+![image10](https://github.com/andrzejabramov/Slice/blob/master/hometasks/homework33/images/image10.png)
