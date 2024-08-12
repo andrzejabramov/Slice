@@ -183,23 +183,23 @@ print(wf.create_file())
 ### - а также дополнительныго метода create_file()
 
 ## 9. Скрины работы метода create_file():
-
+### Предлагается ввести имя рабочей директории - вводим, например files:
 ![image1](https://github.com/andrzejabramov/Slice/blob/master/hometasks/homework33/images/image1.png)
-
+### Если такой директории нет, то она создается почередно открываются созданные в ней файлы (определены атрибутом созданного экз класса), в эти файлы предлагается ввести текст
 ![image2](https://github.com/andrzejabramov/Slice/blob/master/hometasks/homework33/images/image2.png)
-
+### Убеждаемся, что директория и файлы созданы, вводим текст
 ![image3](https://github.com/andrzejabramov/Slice/blob/master/hometasks/homework33/images/image3.png)
-
+### Видим, что текст в файлах появился
 ![image4](https://github.com/andrzejabramov/Slice/blob/master/hometasks/homework33/images/image4.png)
-
+### Проверяем работу методов из задания, которые возвращают словари с соответствующими данными
 ![image5](https://github.com/andrzejabramov/Slice/blob/master/hometasks/homework33/images/image5.png)
-
+### Пробуем создать директорию и файлы с уже имеющимися именами. Нас уведомляют, что директория существует и все действия будут производится в ней, а по файлам предлагают определиться с вариантов ввода текста
 ![image6](https://github.com/andrzejabramov/Slice/blob/master/hometasks/homework33/images/image6.png)
-
+### Пробуем вариант 'S' (Save) - новый текст будет добавлен к существующему, 'C' (Cancel) - в файл ничего не пишется, остается старый текст, 'R' (rewrite) - новый текст записывается поверх старого (т. е. старый удаляется)
 ![image7](https://github.com/andrzejabramov/Slice/blob/master/hometasks/homework33/images/image7.png)
-
+### Для проверки следующего варианта перезапускаем (не обязательно, сделано для удобства создания скринов)
 ![image8](https://github.com/andrzejabramov/Slice/blob/master/hometasks/homework33/images/image8.png)
-
+### При выборе 'SA' (Save As) нам предлашает система вввести имя нового файла и новый текст будет записан в новый файл с новым именем
 ![image9](https://github.com/andrzejabramov/Slice/blob/master/hometasks/homework33/images/image9.png)
-
+### Видим, что в рабочей директории создались три новых файла с новым текстом 
 ![image10](https://github.com/andrzejabramov/Slice/blob/master/hometasks/homework33/images/image10.png)
