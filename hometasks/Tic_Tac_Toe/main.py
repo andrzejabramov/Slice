@@ -1,5 +1,5 @@
 from classes import TicTacToe
-
+#https://adior.ru/index.php/robototekhnika/261-bulls-cows-2
 
 if __name__ == '__main__':
     game = TicTacToe()
