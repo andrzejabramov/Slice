@@ -1,38 +1,32 @@
 class Car:
     def __init__(self, model, vin_number, numbers):
         self.model = model
-        self.__vin = self.__is_valid_vin(vin_number)
-        self.__numbers = self.__is_valid_numbers(numbers)
+        if self.__is_valid_vin(vin_number):
+            self.__vin = vin_number
+        if self.__is_valid_numbers(numbers):
+            self.__numbers = numbers
     def __is_valid_vin(self, vin_number):
         if isinstance(vin_number, int) is False:
-            return IncorrectVinNumber('type')
+            raise IncorrectVinNumber('Некорректный тип vin номер')
         elif vin_number < 1000000 or vin_number > 9999999:
-            return IncorrectVinNumber('count')
+            raise IncorrectVinNumber('Неверный диапазон для vin номера')
         return True
     def __is_valid_numbers(self, numbers):
         if isinstance(numbers, str) is False:
-            return IncorrectCarNumbers('type')
+            raise IncorrectCarNumbers('Некорректный тип данных для номеров')
         elif len(numbers) != 6:
-            return IncorrectCarNumbers('len')
+            raise IncorrectCarNumbers('Неверная длина номера')
         return True
 
 
 class IncorrectVinNumber(Exception):
     def __init__(self, message):
         self.message = message
-        if message == 'type':
-            raise TypeError('Некорректный тип vin номер')
-        elif message == 'count':
-            raise TypeError('Неверный диапазон для vin номера')
         super().__init__(message)
 
 class IncorrectCarNumbers(Exception):
     def __init__(self, message):
         self.message = message
-        if message == 'type':
-            raise TypeError('Некорректный тип данных для номеров')
-        elif message == 'len':
-            raise TypeError('Неверная длина номера')
         super().__init__(message)
 
 
@@ -50,7 +44,7 @@ try:
 except IncorrectVinNumber as exc:
     print(exc.message)
 except IncorrectCarNumbers as exc:
-    print(exc.message)
+     print(exc.message)
 else:
     print(f'{second.model} успешно создан')
 
