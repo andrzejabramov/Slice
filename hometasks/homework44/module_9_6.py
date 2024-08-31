@@ -1,7 +1,10 @@
 def all_variants(text):
-    pass
+    for i in range(1, len(text)+1):
+        for j in range(len(text)):
+            if len(text[j:j+i]) == i:
+                yield text[j:j+i]
 
 
 a = all_variants("abc")
-for i in a:
-print(i)
+for t in a:
+    print(t)
