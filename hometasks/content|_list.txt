@@ -1,0 +1,54 @@
+Модуль №1. Практика GIT. Базовые структуры данных
+task1.py
+Практическое задание по уроку "Базовые структуры данных"
+https://github.com/andrzejabramov/Slice/blob/master/test.py
+
+main.py
+Практическое задание по уроку "Строки и индексация строк"
+https://github.com/andrzejabramov/Slice
+
+homework2.py
+Практическое задание по работе в Pycharm - "Переменные"
+https://github.com/andrzejabramov/Slice/blob/master/hometasks/homework2.py
+
+homework3.py
+Практическая работа по уроку "Динамическая типизация"
+https://github.com/andrzejabramov/Slice/blob/master/hometasks/hometasks3.py
+
+homework4.py
+Практическая работа по уроку "Организация программ и методы строк."
+https://github.com/andrzejabramov/Slice/blob/master/hometasks/hometasks4.py
+
+homework5.py
+Практическое задание по теме: "Неизменяемые и изменяемые объекты. Кортежи и списки"
+https://github.com/andrzejabramov/Slice/blob/master/hometasks/hometasks5.py
+
+homework6/main.py
+Практическое задание по теме: "Словари и множества"
+https://github.com/andrzejabramov/Slice/tree/master/hometasks/homework6
+
+module1hard.py
+Дополнительное практическое задание по модулю: "Базовые структуры данных."
+https://github.com/andrzejabramov/Slice/blob/master/hometasks/homework7/module1hard.py
+-----------------------------------------
+Модуль №2. Основные операторы.
+main.py
+Самостоятельная работа по уроку "Цели и задачи. Поток выполнения программы."
+https://github.com/andrzejabramov/Slice/tree/master/hometasks/homework8
+
+module_2_2.py
+Цель: применить навыки создания условных конструкций и знания операторов if, else, elif / and, or, not.
+https://github.com/andrzejabramov/Slice/blob/master/hometasks/homework9/module_2_2.py
+
+module_2_3.py
+Цель: применить навыки создания цикла while, а так же применения операторов break и continue.
+https://github.com/andrzejabramov/Slice/blob/master/hometasks/homework10/module_2_3.py
+
+module_2_4.py
+Цель: закрепить навык решения задач при помощи цикла for, применив знания об основных типах данных.
+https://github.com/andrzejabramov/Slice/blob/master/hometasks/homework11/module_2_4.py
+
+module_2_5.py
+Цель: закрепить навык написания функций и их вызовов.
+https://github.com/andrzejabramov/Slice/blob/master/hometasks/homework12/module_2_5.py
+
