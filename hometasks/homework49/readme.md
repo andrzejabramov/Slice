@@ -100,7 +100,8 @@ class Cafe:
 Цикл завершавет работу. Программа завершается.
 
 Прикладываю скрин консоли:
-
+![img1.png](https://github.com/andrzejabramov/Slice/blob/master/hometasks/homework49/img1.png)
+![img2.png](https://github.com/andrzejabramov/Slice/blob/master/hometasks/homework49/img2.png)
 
 
 
