@@ -25,7 +25,7 @@ class Bank:
             print(f'Запрос на {rand_exp}. ')
             if rand_exp > self.balance:
                 print('Запрос отклонен, недостаточно средств ')
-                self.lock.locked()
+                self.lock.acquire()
             else:
                 self.balance = self.balance - rand_exp
                 print(f'Снятие {rand_exp}. Баланс: {self.balance}. ')
