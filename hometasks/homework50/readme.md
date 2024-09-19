@@ -27,5 +27,5 @@ with multiprocessing.Pool() as pool:
 ### Вывод: планирровать количество запускаемых процессов необходимо в зависимости от конкретного задания, больше - не всегда оправдано.
 ### Прикладываю скрины вариантов работы:
 ![1process.png](https://github.com/andrzejabramov/Slice/blob/master/hometasks/homework50/img/1process.png)
-![4process.png]https://github.com/andrzejabramov/Slice/blob/master/hometasks/homework50/img/4process.png)
-![8process.png]https://github.com/andrzejabramov/Slice/blob/master/hometasks/homework50/img/8process.png)
+![4process.png](https://github.com/andrzejabramov/Slice/blob/master/hometasks/homework50/img/4process.png)
+![8process.png](https://github.com/andrzejabramov/Slice/blob/master/hometasks/homework50/img/8process.png)
