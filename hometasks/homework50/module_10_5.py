@@ -24,12 +24,12 @@ start = datetime.now()
 # print(f'строк во всех файлах: {read_info(filenames)}')
 
 ###многопроцессорный
-# if __name__ == '__main__':
-#     filenames = [[f'./Files/file {number}.txt'] for number in range(1, 5)]
-#     with multiprocessing.Pool(processes=4) as pool:
-#         print(f'строк во всех файлах: {sum(pool.map(read_info, filenames))}')
-#         pool.close()
-#         pool.join()
+#if __name__ == '__main__':
+    # filenames = [[f'./Files/file {number}.txt'] for number in range(1, 5)]
+    # with multiprocessing.Pool(processes=4) as pool:
+    #     print(f'строк во всех файлах: {sum(pool.map(read_info, filenames))}')
+    #     pool.close()
+    #     pool.join()
 
 print(f'Время выполнения задачи: {datetime.now() - start}')
 
