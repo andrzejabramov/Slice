@@ -24,4 +24,8 @@ with multiprocessing.Pool() as pool:
 ```
 2-й вариант: при остутствии аргументов класса Pool(), то есть по умолчанию запускается количество процессов, равное количеству ядер процессора устройства, на котором запускается код (у меня это 8). Время работы примерно 1,1 сек, то есть даже дольше, чем при 4-процессорном варианте.
 
-### Вывод: планирровать количество запускаемых процессов необходимо в зависимости от конкретного задания, больше - не всегда оправдано. 
+### Вывод: планирровать количество запускаемых процессов необходимо в зависимости от конкретного задания, больше - не всегда оправдано.
+### Прикладываю скрины вариантов работы:
+![1process.png](https://github.com/andrzejabramov/Slice/blob/master/hometasks/homework50/img/1process.png)
+![4process.png]https://github.com/andrzejabramov/Slice/blob/master/hometasks/homework50/img/4process.png)
+![8process.png]https://github.com/andrzejabramov/Slice/blob/master/hometasks/homework50/img/8process.png)
