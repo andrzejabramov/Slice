@@ -14,4 +14,4 @@
 ![3_pipInstall.png](https://github.com/andrzejabramov/Slice/blob/master/hometasks/homework52/img/3_pipInstall.png)
 
 #### результат запуска файла main.py:
-![4_Result.png]()
+![4_Result.png](https://github.com/andrzejabramov/Slice/blob/master/hometasks/homework52/img/4_Result.png)
