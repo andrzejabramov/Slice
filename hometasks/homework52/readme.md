@@ -8,7 +8,7 @@
 ![1_projectTree.png](https://github.com/andrzejabramov/Slice/blob/master/hometasks/homework52/img/1_projectTree.png)
 
 #### обновление pip:
-![2_pipUpgrade.png]()
+![2_pipUpgrade.png](https://github.com/andrzejabramov/Slice/blob/master/hometasks/homework52/img/2_pipUpgrade.png)
 
 #### инсталляция библиотек из файла requirements.txt:
 ![3_pipInstall.png]()
