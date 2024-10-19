@@ -39,10 +39,10 @@ def introspection_info(obj):
         'methods': m,
         'module': module_name
     })
-    print(d)
+    return d
 
 
-introspection_info(wf)
+print(introspection_info(wf))
 
 
 
