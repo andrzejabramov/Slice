@@ -21,34 +21,31 @@
 ```commandline
 def introspection_info(obj):
     d = {}
-    l = []
+    a = []
+    m = []
     type_val = str(type(obj))[8:len(str(type(obj))) - 2]
     module_name = inspect.getmodule(obj)
     if module_name != None:
         module_name = str(module_name)[9:]
-        module_name = module_name[:re.search(r'\s', module_name).start()-1]
-    try:
-        attr_val = list(vars(obj))
-    except TypeError:
-        attr_val = []
-    for m in inspect.getmembers(obj, predicate=inspect.ismethod(obj)):
-        m = str(m[0])
-        l.append(m)
+        module_name = module_name[:re.search(r'\s', module_name).start() - 1]
+    for attr in dir(obj):
+        if callable(getattr(obj, attr)):
+            m.append(attr)
+        else:
+            a.append(attr)
     d.update({
         'type': type_val,
-        'attributes': attr_val,
-        'methods': l,
+        'attributes': a,
+        'methods': m,
         'module': module_name
     })
-    print(d)
+    return d
 ```
 ### Алгоритм решения:
 1. внутри функции создаем пустой словарь, который будем наполнять парами ключ - значение
 2. Создаем пустой список для множественных свойств
 3. Из результата вызова print(type(obj)) вырезаем только формат объекта
 4. Получаем информацию о модуле, из которого вызван объект, если значение не None, то вырезаем название модуля
-5. Для перехвата ошибки типов для атрибутов прнименяем блок try - except. В случае исключения набору атрибутов присваиваем пустой список
-6. Для методов используем вызов inspect.getmembers с предикатом ismodule (либо isfunction)
-7. Из полученного кортежа берем первый элемент (имя метода) и добавляем его в список
-8. Формируем и выводим в консоль требуемый словарь
-9. Вызываем функцию, поставляя в качестве параметров по очереди переменные созданных ранее объектов различного формата 
+5. С помощью метода callable отделяем методы от атрибутов
+6. Формируем и выводим в консоль требуемый словарь
+7. Вызываем функцию, поставляя в качестве параметров по очереди переменные созданных ранее объектов различного формата 
