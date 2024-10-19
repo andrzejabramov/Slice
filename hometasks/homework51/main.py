@@ -1,8 +1,6 @@
 from classes import WordsFinder
 import inspect
 import re
-import sys
-from pprint import pprint
 
 
 a = 'sf'
@@ -23,29 +21,28 @@ wf = WordsFinder('test.py')
 
 def introspection_info(obj):
     d = {}
-    l = []
+    a = []
+    m = []
     type_val = str(type(obj))[8:len(str(type(obj))) - 2]
     module_name = inspect.getmodule(obj)
     if module_name != None:
         module_name = str(module_name)[9:]
-        module_name = module_name[:re.search(r'\s', module_name).start()-1]
-    try:
-        attr_val = list(vars(obj))
-    except TypeError:
-        attr_val = []
-    for m in inspect.getmembers(obj, predicate=inspect.ismethod(obj)):
-        m = str(m[0])
-        l.append(m)
+        module_name = module_name[:re.search(r'\s', module_name).start() - 1]
+    for attr in dir(obj):
+        if callable(getattr(obj, attr)):
+            m.append(attr)
+        else:
+            a.append(attr)
     d.update({
         'type': type_val,
-        'attributes': attr_val,
-        'methods': l,
+        'attributes': a,
+        'methods': m,
         'module': module_name
     })
     print(d)
 
 
-introspection_info(a)
+introspection_info(wf)
 
 
 
